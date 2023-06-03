@@ -13,47 +13,21 @@ const CodeBlock: FC<Pick<Code, "code" | "title">> = ({ code, title }) => {
       Prism.highlightAll();
     }
   }, []);
-  const [copied, setCopied] = React.useState<boolean>(false);
+  // const [copied, setCopied] = React.useState<boolean>(false);
   return (
-    <Card className="relative h-96 overflow-hidden">
-      <div className=" absolute z-10 flex h-full w-full rounded-lg bg-black px-4 text-center text-lg text-white opacity-80 md:text-xl lg:text-2xl">
-        <div className="relative items-center justify-center ">
-          {/* <div className="absolute right-0 top-0">
-            {" "}
-            <button
-              onClick={() => {
-                navigator.clipboard
-                  .writeText(code)
-                  .then(() => {
-                    setCopied(true);
-                  })
-                  .catch((err) => {
-                    console.log(err);
-                  });
-              }}
-              className="z-20 rounded-md bg-gray-800 px-2 py-1 text-sm font-normal text-white"
-            >
-              {copied ? (
-                <div className="flex items-center justify-center">
-                  <IoIosDoneAll className="text-xl text-green-500" />
-                </div>
-              ) : (
-                <p>Copy</p>
-              )}
-            </button>
-          </div> */}
-        </div>
-        <CardHeader className="flex w-full flex-row items-center justify-center text-xl font-semibold">
+    <div className="relative h-72 overflow-hidden cursor-pointer">
+      <div className="rounded-xl absolute z-10 flex h-[280px] bottom-0 w-full bg-black text-center text-lg text-white opacity-80 hover:opacity-90 transition-all ease-in duration-300 md:text-xl lg:text-2xl px-6">
+        <div className="flex w-full flex-row items-center justify-center text-xl font-semibold hover:scale-110 transition-all duration-200">
           {title}
-        </CardHeader>
+        </div>
       </div>
 
-      <div className="relative h-full w-full ">
-        <pre className="language-javascript h-full">
+      <div className="h-full w-full ">
+        <pre className="no-scrollbar rounded-xl language-javascript h-[280px]">
           <code className="text-xl">{code}</code>
         </pre>
       </div>
-    </Card>
+    </div>
   );
 };
 

@@ -16,7 +16,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="flex w-screen justify-center">
-        <div className="grid grid-cols-1 flex-col gap-10 px-4 md:grid-cols-2">
+        <div className="grid grid-cols-1 flex-col gap-4 px-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {codes?.map((code) => (
             <CodeBlock key={code.id} code={code.code} title={code.title} />
           ))}
