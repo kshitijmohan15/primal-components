@@ -15,15 +15,15 @@ const CodeBlock: FC<Pick<Code, "code" | "title">> = ({ code, title }) => {
   }, []);
   // const [copied, setCopied] = React.useState<boolean>(false);
   return (
-    <div className="relative h-72 overflow-hidden cursor-pointer">
-      <div className="rounded-xl absolute z-10 flex h-[280px] bottom-0 w-full bg-black text-center text-lg text-white opacity-80 hover:opacity-90 transition-all ease-in duration-300 md:text-xl lg:text-2xl px-6">
-        <div className="flex w-full flex-row items-center justify-center text-xl font-semibold hover:scale-110 transition-all duration-200">
+    <div className="relative h-72 cursor-pointer overflow-hidden">
+      <div className="absolute bottom-0 z-10 flex h-[280px] w-full rounded-xl bg-black px-10 text-center text-lg text-white opacity-80 transition-all duration-300 ease-in hover:opacity-90 md:text-xl lg:text-2xl">
+        <div className="flex w-full flex-row items-center justify-center text-xl font-semibold transition-all duration-200 hover:scale-110">
           {title}
         </div>
       </div>
 
       <div className="h-full w-full ">
-        <pre className="no-scrollbar rounded-xl language-javascript h-[280px]">
+        <pre className="no-scrollbar language-javascript h-[280px] rounded-xl">
           <code className="text-xl">{code}</code>
         </pre>
       </div>

@@ -14,16 +14,16 @@ const Landing = () => {
 
       <main className="flex h-screen w-full flex-col items-center justify-center px-4">
         <div className="-mt-32 flex flex-col gap-10">
-          <div className="flex flex-col items-center gap-4">
-            <h1 className="text-center text-3xl font-medium md:text-4xl">
+          <div className="flex flex-col items-center gap-10">
+            <h1 className="text-center text-3xl font-medium md:text-4xl xl:text-7xl">
               Save time and supercharge your projects
             </h1>
-            <p className="max-w-xl text-center text-sm font-normal text-gray-700 md:text-lg">
+            <p className="max-w-5xl xl:text-3xl text-center text-sm font-normal text-gray-500 md:text-lg">
               Effortlessly access a vast library of ready-to-use code blocks.
               Say goodbye to hours spent scouring the internet for the right
               snippets.{" "}
             </p>
-            <div className="flex w-full items-center">
+            <div className="flex w-full items-center max-w-3xl">
               <Input
                 className="flex w-full items-start rounded-r-none"
                 placeholder="Search"

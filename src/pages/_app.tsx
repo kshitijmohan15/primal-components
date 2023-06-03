@@ -7,6 +7,7 @@ import { Rubik } from "@next/font/google";
 
 import "@/styles/globals.css";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 const rubik = Rubik({
   weight: ["300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin-ext"],
@@ -19,9 +20,11 @@ const MyApp: AppType<{ session: Session | null }> = ({
     <SessionProvider session={session}>
       <Toaster />
       <div className={rubik.className}>
-        <nav className="sticky top-0 flex justify-center px-4 py-2 backdrop-blur-xl z-[1000] bg-white bg-opacity-30">
+        <nav className="sticky top-0 z-[1000] flex justify-center bg-white bg-opacity-30 px-4 py-2 backdrop-blur-xl">
           <div className="flex w-full max-w-7xl items-center justify-between">
-            <p className="text-2xl font-semibold text-black">Primal</p>
+            <Link href={"/"}>
+              <p className="text-2xl font-semibold text-black">Primal</p>
+            </Link>
             <Button className="bg-black text-xl text-white">Sign in</Button>
           </div>
         </nav>

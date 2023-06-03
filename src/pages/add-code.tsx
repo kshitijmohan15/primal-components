@@ -26,21 +26,7 @@ const Home: NextPage = () => {
         <meta name="description" content="Get your API components right here" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <nav>
-        <div className="flex items-center justify-between px-4 py-4">
-          <div className="flex items-center space-x-4">
-            <Link href="/" className="items-center">
-              <p className="text-lg font-bold text-black">Primal</p>
-            </Link>
-            <Link href="/docs" className="text-md items-center">
-              <p className="text-black">Docs</p>
-            </Link>
-          </div>
-          <div>
-            <AuthShowcase />
-          </div>
-        </div>
-      </nav>
+
       <main className="">
         <div className="w-full">
           <label>Title</label>
