@@ -4,14 +4,7 @@ import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-typescript";
 import { IoIosDoneAll } from "react-icons/io";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Code } from "@prisma/client";
 
 const CodeBlock: FC<Pick<Code, "code" | "title">> = ({ code, title }) => {
@@ -28,10 +21,16 @@ const CodeBlock: FC<Pick<Code, "code" | "title">> = ({ code, title }) => {
         <div>{title}</div>
         <button
           onClick={() => {
-            navigator.clipboard.writeText(code);
-            setCopied(true);
+            navigator.clipboard
+              .writeText(code)
+              .then(() => {
+                setCopied(true);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
           }}
-          className="rounded-md z-20 bg-gray-800 px-2 py-1 text-sm font-normal text-white"
+          className="z-20 rounded-md bg-gray-800 px-2 py-1 text-sm font-normal text-white"
         >
           {copied ? (
             <div className="flex items-center justify-center">
