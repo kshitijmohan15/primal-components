@@ -8,7 +8,7 @@ export const env = createEnv({
    */
   server: {
     DATABASE_URI: z.string().optional(),
-    // NODE_ENV: z.enum(["development", "test", "production"]),
+    NODE_ENV: z.enum(["development", "test", "production"]),
     NEXTAUTH_SECRET:
       process.env.NODE_ENV === "production"
         ? z.string().min(1)
@@ -41,7 +41,7 @@ export const env = createEnv({
    */
   runtimeEnv: {
     DATABASE_URI: process.env.DATABASE_URL,
-    // NODE_ENV: process.env.NODE_ENV,
+    NODE_ENV: process.env.NODE_ENV,
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
