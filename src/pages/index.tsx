@@ -1,40 +1,83 @@
-import { type NextPage } from "next";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import Head from "next/head";
 import Link from "next/link";
-import { api } from "@/utils/api";
-import CodeBlock from "@/components/CodeBlock";
+import React from "react";
+import { AiOutlineSearch } from "react-icons/ai";
 
-const Home: NextPage = () => {
-  const { data: codes } = api.code.getAll.useQuery();
+const Landing = () => {
   return (
     <>
       <Head>
         <title>Primal</title>
-        <meta name="description" content="Get your API components right here" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
-      <nav>
-        <div className="flex items-center justify-between px-4 py-4">
-          <div className="flex items-center space-x-4">
-            <Link href="/" className="items-center">
-              <p className="text-lg font-bold text-black">Primal</p>
-            </Link>
-            <Link href="/docs" className="text-md items-center">
-              <p className="text-black">Docs</p>
+
+      <main className="flex h-screen w-full flex-col items-center justify-center px-4">
+        <div className="-mt-32 flex flex-col gap-10">
+          <div className="flex flex-col items-center gap-4">
+            <h1 className="text-center text-3xl font-medium md:text-4xl">
+              Save time and supercharge your projects
+            </h1>
+            <p className="max-w-xl text-center text-sm font-normal text-gray-700 md:text-lg">
+              Effortlessly access a vast library of ready-to-use code blocks.
+              Say goodbye to hours spent scouring the internet for the right
+              snippets.{" "}
+            </p>
+            <div className="flex w-full items-center">
+              <Input
+                className="flex w-full items-start rounded-r-none"
+                placeholder="Search"
+              ></Input>
+
+              <Button className="rounded-l-none bg-gray-600 text-white">
+                <AiOutlineSearch className="text-xl"></AiOutlineSearch>
+              </Button>
+            </div>
+          </div>
+          <div className="relative h-40 overflow-hidden ">
+            <div className="animate animate absolute left-0 flex h-36	 w-[200%]  items-center justify-around gap-20">
+              {["Axum", "Express", "Typescript"].map((item, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="flex items-start justify-center rounded-full bg-gray-500 p-[3px]"
+                  >
+                    <div className="flex items-start justify-center rounded-full bg-white p-1">
+                      <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gray-300 text-xs font-semibold">
+                        {item}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+              {["Axum", "Express", "Typescript"].map((item, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="flex items-start justify-center rounded-full bg-gray-500 p-[3px]"
+                  >
+                    <div className="flex items-start justify-center rounded-full bg-white p-1">
+                      <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gray-300 text-xs font-semibold">
+                        {item}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div className="flex w-full justify-center">
+            <Link href={"/blocks"}>
+              <Button className="bg-black">
+                <p className="text-xl font-semibold text-white">Library</p>
+              </Button>
             </Link>
           </div>
         </div>
-      </nav>
-      <main className="flex w-screen justify-center">
-        <div className="grid grid-cols-1 flex-col gap-10 px-4 md:grid-cols-2">
-          {codes?.map((code) => (
-            <CodeBlock key={code.id} code={code.code} title={code.title} />
-          ))}
-        </div>
       </main>
+      <main className="h-screen w-full"></main>
     </>
   );
 };
 
-export default Home;
+export default Landing;

@@ -16,37 +16,43 @@ const CodeBlock: FC<Pick<Code, "code" | "title">> = ({ code, title }) => {
   const [copied, setCopied] = React.useState<boolean>(false);
   return (
     <Card className="relative h-96 overflow-hidden">
-      <div className="absolute z-10 h-full w-full rounded-lg bg-gradient-to-t from-black to-transparent"></div>
-      <CardHeader className=" flex w-full flex-row items-center justify-between text-xl font-semibold">
-        <div>{title}</div>
-        <button
-          onClick={() => {
-            navigator.clipboard
-              .writeText(code)
-              .then(() => {
-                setCopied(true);
-              })
-              .catch((err) => {
-                console.log(err);
-              });
-          }}
-          className="z-20 rounded-md bg-gray-800 px-2 py-1 text-sm font-normal text-white"
-        >
-          {copied ? (
-            <div className="flex items-center justify-center">
-              <IoIosDoneAll className="text-xl text-green-500" />
-            </div>
-          ) : (
-            <p>Copy</p>
-          )}
-        </button>
-      </CardHeader>
+      <div className=" absolute z-10 flex h-full w-full rounded-lg bg-black px-4 text-center text-lg text-white opacity-80 md:text-xl lg:text-2xl">
+        <div className="relative items-center justify-center ">
+          {/* <div className="absolute right-0 top-0">
+            {" "}
+            <button
+              onClick={() => {
+                navigator.clipboard
+                  .writeText(code)
+                  .then(() => {
+                    setCopied(true);
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                  });
+              }}
+              className="z-20 rounded-md bg-gray-800 px-2 py-1 text-sm font-normal text-white"
+            >
+              {copied ? (
+                <div className="flex items-center justify-center">
+                  <IoIosDoneAll className="text-xl text-green-500" />
+                </div>
+              ) : (
+                <p>Copy</p>
+              )}
+            </button>
+          </div> */}
+        </div>
+        <CardHeader className="flex w-full flex-row items-center justify-center text-xl font-semibold">
+          {title}
+        </CardHeader>
+      </div>
 
-      <CardContent className="relative">
-        <pre className="language-javascript">
+      <div className="relative h-full w-full ">
+        <pre className="language-javascript h-full">
           <code className="text-xl">{code}</code>
         </pre>
-      </CardContent>
+      </div>
     </Card>
   );
 };
