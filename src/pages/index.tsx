@@ -41,14 +41,20 @@ const Landing = () => {
             <div className="animate animate absolute left-0 flex h-36	 w-[200%]  items-center justify-around gap-20">
               {["Axum", "Express", "Typescript"].map((item, index) => {
                 return (
-                  <div className="flex items-center justify-center rounded-lg px-4 py-2 border-2 border-orange-300 bg-orange-200 text-sm font-semibold text-orange-900">
+                  <div
+                    key={index}
+                    className="flex items-center justify-center rounded-lg border-2 border-orange-300 bg-orange-200 px-4 py-2 text-sm font-semibold text-orange-900"
+                  >
                     {item}
                   </div>
                 );
               })}
               {["Axum", "Express", "Typescript"].map((item, index) => {
                 return (
-                  <div className="flex items-center justify-center rounded-lg px-4 py-2 border-2 border-orange-300 bg-orange-200 text-sm font-semibold text-orange-900">
+                  <div
+                    key={index}
+                    className="flex items-center justify-center rounded-lg border-2 border-orange-300 bg-orange-200 px-4 py-2 text-sm font-semibold text-orange-900"
+                  >
                     {item}
                   </div>
                 );
