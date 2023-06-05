@@ -41,14 +41,17 @@ const BlockDetail = () => {
           <pre className="no-scrollbar language-typescript relative h-auto w-full max-w-4xl overflow-x-scroll rounded-xl">
             {/* copy code button */}
             <Button
-              onClick={() => {
-                navigator.clipboard
+              onClick={(event) => {
+                void navigator.clipboard
                   .writeText(block_detail?.code ?? "Code not found")
                   .then(() => {
                     setCopied(true);
                     setTimeout(() => {
                       setCopied(false);
                     }, 1000);
+                  })
+                  .catch(() => {
+                    setCopied(false);
                   });
               }}
               className="absolute right-0 top-0 bg-black text-lg font-semibold text-white"
