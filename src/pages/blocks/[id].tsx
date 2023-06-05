@@ -1,4 +1,3 @@
-import CodeBlock from "@/components/CodeBlockPreview";
 import { api } from "@/utils/api";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
@@ -6,14 +5,14 @@ import Prism from "prismjs";
 import { Button } from "@/components/ui/button";
 import { IoIosDoneAll } from "react-icons/io";
 import Head from "next/head";
-import { set } from "zod";
+
 const BlockDetail = () => {
   const router = useRouter();
   const { id } = router.query;
   const { data: block_detail } = api.code.getOne.useQuery(
     { id: id as string },
     {
-      onSuccess: (data) => {
+      onSuccess: () => {
         Prism.highlightAll();
       },
     }
@@ -41,7 +40,7 @@ const BlockDetail = () => {
           <pre className="no-scrollbar language-typescript relative h-auto w-full max-w-4xl overflow-x-scroll rounded-xl">
             {/* copy code button */}
             <Button
-              onClick={(event) => {
+              onClick={() => {
                 void navigator.clipboard
                   .writeText(block_detail?.code ?? "Code not found")
                   .then(() => {

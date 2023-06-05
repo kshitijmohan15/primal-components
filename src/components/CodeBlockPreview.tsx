@@ -2,9 +2,6 @@ import React, { type FC, useEffect } from "react";
 import Prism from "prismjs";
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-typescript";
-import { IoIosDoneAll } from "react-icons/io";
-
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Code } from "@prisma/client";
 
 const CodeBlockPreview: FC<Pick<Code, "code" | "title">> = ({
