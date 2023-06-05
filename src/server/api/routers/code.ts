@@ -8,11 +8,20 @@ export const codeRouter = createTRPCRouter({
       return ctx.prisma.code.create({
         data: {
           code: input.code,
-          title: input.title
+          title: input.title,
         },
       });
     }),
   getAll: publicProcedure.query(({ ctx }) => {
     return ctx.prisma.code.findMany();
   }),
+  getOne: publicProcedure
+    .input(z.object({ id: z.string() }))
+    .query(({ ctx, input }) => {
+      return ctx.prisma.code.findUnique({
+        where: {
+          id: input.id,
+        },
+      });
+    }),
 });
