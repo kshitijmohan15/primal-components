@@ -6,6 +6,7 @@ import { useToast } from "@/components/ui/use-toast";
 
 const Home: NextPage = () => {
   const [code, setCode] = useState("");
+  const [requirements, setRequirements] = useState("");
   const [title, setTitle] = useState("");
   const { toast } = useToast();
 
@@ -36,6 +37,11 @@ const Home: NextPage = () => {
           <textarea
             className="w-full border-2 border-cyan-500 p-4"
             onChange={(evnt) => setCode(() => evnt.target.value)}
+          />
+          <label>Requirements</label>
+          <textarea
+            className="w-full border-2 border-cyan-500 p-4"
+            onChange={(evnt) => setTitle(() => evnt.target.value)}
           />
           <button
             className="rounded-full bg-white/10 px-10 py-3 font-semibold text-black no-underline transition hover:bg-black/20"

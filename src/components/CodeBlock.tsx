@@ -6,7 +6,7 @@ import "prismjs/components/prism-typescript";
 import { Button } from "./ui/button";
 import { IoIosDoneAll } from "react-icons/io";
 
-const CodeBlock: FC<Pick<Code, "code" | "title">> = ({ code }) => {
+const CodeBlock: FC<Pick<Code, "code">> = ({ code }) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       Prism.highlightAll();

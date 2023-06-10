@@ -55,9 +55,10 @@ model VerificationToken {
 }
 
 model Code {
-    id    String @id @default(auto()) @map("_id") @db.ObjectId
-    title String
-    code  String
+    id           String @id @default(auto()) @map("_id") @db.ObjectId
+    title        String
+    code         String
+    requirements String?
 }
 
 model EmailList {
