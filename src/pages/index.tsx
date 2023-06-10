@@ -1,12 +1,33 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ArrowRightIcon } from "lucide-react";
+import { ArrowRightIcon, PlusIcon } from "lucide-react";
 import Head from "next/head";
 import Link from "next/link";
 import React from "react";
 import { AiOutlineSearch } from "react-icons/ai";
-
+import { useToast } from "@/components/ui/use-toast";
+import { api } from "@/utils/api";
+import { z } from "zod";
 const Landing = () => {
+  const { toast } = useToast();
+  const [isEmailValid, setIsEmailValid] = React.useState(false);
+  const [email, setEmail] = React.useState("");
+  const emailSchema = z.string().email();
+  const { mutateAsync: registerEmail } =
+    api.email_list.createEmailList.useMutation({
+      onError: (err) => {
+        if (String(err.shape?.code) === "-32603") {
+          toast({
+            title: "Email already registered",
+            description: "Your email has already been registered",
+            style: {
+              backgroundColor: "green",
+              color: "white",
+            },
+          });
+        }
+      },
+    });
   return (
     <>
       <Head>
@@ -28,12 +49,43 @@ const Landing = () => {
             </div>
             <div className="flex w-full max-w-3xl items-center">
               <Input
+                onChange={(evnt) => {
+                  setEmail(evnt.target.value);
+                }}
                 className="flex w-full items-start rounded-r-none"
-                placeholder="Search"
+                placeholder="Enter your email and join the waitlist"
               ></Input>
 
               <Button className="rounded-l-none bg-blue-600 text-white">
-                <AiOutlineSearch className="text-xl"></AiOutlineSearch>
+                {/* <AiOutlineSearch className="text-xl"></AiOutlineSearch> */}
+                <PlusIcon
+                  onClick={async () => {
+                    if (emailSchema.safeParse(email).success) {
+                      try {
+                        await registerEmail({ email });
+                        toast({
+                          title: "Email registered",
+                          description: "Your email has been registered",
+                          style: {
+                            backgroundColor: "green",
+                            color: "white",
+                          },
+                        });
+                      } catch (err) {
+                        console.log(err);
+                      }
+                    } else {
+                      toast({
+                        title: "Email not valid",
+                        description: "Your email is not valid",
+                        style: {
+                          backgroundColor: "red",
+                          color: "white",
+                        },
+                      });
+                    }
+                  }}
+                ></PlusIcon>
               </Button>
             </div>
           </div>

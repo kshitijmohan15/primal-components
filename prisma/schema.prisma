@@ -59,3 +59,8 @@ model Code {
     title String
     code  String
 }
+
+model EmailList {
+    id    String @id @default(auto()) @map("_id") @db.ObjectId
+    email String @unique
+}
